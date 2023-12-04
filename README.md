@@ -6,6 +6,8 @@ According to NFC Tools, these NFC pads announce themselves as NTAG215s, and cont
 The binary data and most of the text data appears to be the same across each tag, the only differences being in the final two blocks.
 The text data is (I think) UTF-16 encoded, and reads `actionLootLocationXX`, where XX is a two digit number identifying the loot location.
 
+I can't guarantee these exactly match the real tags in-park; I read three in-park and extrapolated the rest based on the above pattern, but they all seem to work as of this writing.
+
 The numbers follow the layout of the collectibles in the app, with 08 and 11 skipped. So, the IDs are:
 01. Villain Network Channel Mug
 02. Binky Nelson's Pacifier
@@ -24,5 +26,6 @@ You'll have to imagine the zero-padding to two digits since it doesn't display i
 
 The files provided here are Proxmark3 dump files, with a `.json` and `.bin` for each.
 Only blocks 0x04 to 0x10 (4 to 16) are important here, but the remaining zero bytes out to the size of NTAG215 are included since the dumps were produced from those.
+If you're using something other than a Proxmark to write these to tags, the `.json` files should be readable and reasonably short enough that you can copy the required blocks by hand if needed.
 
 This information is current as of 2023-12-04
